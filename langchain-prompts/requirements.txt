@@ -1,0 +1,36 @@
+# Core dependencies
+langchain
+langchain-core
+
+# OpenAI integration
+langchain-openai
+openai
+
+# Anthropic integration
+langchain-anthropic
+
+# Google Gemini/PaLM integration
+langchain-google-genai
+google-generativeai
+
+# Hugging Face integration
+langchain-huggingface
+transformers
+huggingface-hub
+
+# Data processing
+numpy
+pandas
+pyarrow  # Required by pandas/streamlit
+
+# Machine learning
+scikit-learn
+
+# Environment and UI
+python-dotenv
+streamlit
+
+# Add these to ensure proper installation
+wheel
+setuptools
+
