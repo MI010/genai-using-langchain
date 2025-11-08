@@ -4,12 +4,15 @@ import streamlit as st
 
 load_dotenv()
 
-model = ChatOpenAI(model_name="gpt-3.5-turbo", temperature=0)
+model = ChatOpenAI()
 
-st.header("Research Assistant Chatbot")
+st.header("Research Assistant Tool")
 user_input = st.text_input("Enter your query:") 
 
 if st.button("Summerize"):
     result = model.invoke(user_input)
     st.write("Response:", result.content)
 
+
+
+    
