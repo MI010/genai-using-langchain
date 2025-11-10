@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+langchain = "*"
+langchain-core = "*"
+langchain-openai = "*"
+openai = "*"
+langchain-anthropic = "*"
+langchain-google-genai = "*"
+google-generativeai = "*"
+langchain-huggingface = "*"
+transformers = "*"
+huggingface-hub = "*"
+numpy = "*"
+pandas = "*"
+pyarrow = "*"
+scikit-learn = "*"
+python-dotenv = "*"
+streamlit = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.14"
