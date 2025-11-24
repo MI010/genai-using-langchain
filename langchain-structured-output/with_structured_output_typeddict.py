@@ -1,19 +1,28 @@
 from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
-from typing import TypedDict
+from typing import TypedDict, Annotated, Optional, Literal
 
 load_dotenv()
 
 model = ChatOpenAI()
 class Review(TypedDict):
-    sentiment: str
-    sumurry: str
+    key_themes: Annotated[list[str], "write the key themes discussed in the review."]   
+    sentiment: Annotated[Literal["pos","neg"], "The sentiment of the review, either 'positive', 'negative' or 'neutral'."]  
+    sumurry: Annotated[str, "A brief summary of the review."]
+    pros: Annotated[Optional[list[str]], "List the pros mentioned in the review."]
+    cons: Annotated[Optional[list[str]], "List the cons mentioned in the review."]
+    name: Annotated[Optional[str], "The name of the reveiwer."]
 
 # INPUT -> LLM -> SENTIMENT & SUMURY OUTPUT
 
 structured_model = model.with_structured_output(Review)
-result = structured_model.invoke(""" The hardware is greate, but the software is terrible. There are too many pre intalled apps that I don't use and can't remove.
-             Also the UI looks outdated compared to other phones in the same price range. Hoping for software updates to improve the experience.""") 
+# result = structured_model.invoke(""" The hardware is greate, but the software is terrible. There are too many pre intalled apps that I don't use and can't remove.
+#              Also the UI looks outdated compared to other phones in the same price range. Hoping for softw
+result = structured_model.invoke(""" I recently upgraded to samsung galaxy, its an absolute powerhouse. SNapdrago 8 and gen 3
+                                  blah blah blah
+                                 
+                                 pros: powerful processor.
+                                 cons:bulky and heavy.""") 
 print(result)
 print("Sentiment: ", result['sentiment'])
 print("Summary: ", result['sumurry'])  
